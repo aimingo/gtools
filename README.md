@@ -11,3 +11,10 @@ remove duplicates result
 
 `1,2`
 
+
+#####  gtools.SliceExists ele is exists in the slice
+
+`
+gtools.SliceExists([]uin64{1,1,2},1)  => true
+gtools.SliceExists([]uin64{1,1,2},3)  => false
+`
