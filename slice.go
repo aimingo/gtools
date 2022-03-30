@@ -33,3 +33,29 @@ func SliceUNIQ(data interface{}) interface{} {
 	}
 	return sliceOfV.Interface()
 }
+
+//SliceExists  ele exist data
+func SliceExists(data interface{}, ele interface{}) bool {
+	tOf := reflect.TypeOf(data)
+	if tOf.Kind() != reflect.Slice {
+		return false
+	}
+
+	vOf := reflect.ValueOf(data)
+	if vOf.Len() == 0 {
+		return false
+	}
+
+	if vOf.Index(0).CanInterface() == false {
+		return false
+	}
+
+	for i := 0; i < vOf.Len(); i++ {
+		tmp := vOf.Index(i).Interface()
+		if reflect.DeepEqual(tmp, ele) {
+			return true
+		}
+	}
+
+	return false
+}
